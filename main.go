@@ -1,7 +1,20 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+
+	"gocacheproxy/request"
+	"gocacheproxy/routes"
+
+	"github.com/gin-gonic/gin"
+)
 
 func main() {
-	fmt.Println("hello")
+	server := os.Args[1]
+	fmt.Println("server", server)
+	r := gin.Default()
+	routes.DataRoutes(r)
+	r.NoRoute(request.HandleReq)
+	r.Run()
 }
