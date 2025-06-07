@@ -1,12 +1,13 @@
-package routes
+package server
 
 import (
+	"gocacheproxy/server"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
-func DataRoutes(engine *gin.Engine) {
+func (s *Server) DataRoutes(engine *gin.Engine) {
 	group := engine.Group("data")
 	group.GET("/", getData)
 }

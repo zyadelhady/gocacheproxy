@@ -1,22 +1,18 @@
 package main
 
 import (
-	"fmt"
 	"os"
 
-	"gocacheproxy/request"
-	"gocacheproxy/routes"
+	"gocacheproxy/server"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	server := os.Args[1]
-	fmt.Println("server", server)
+	url := os.Args[1]
+	srv := server.New(url)
 	r := gin.Default()
-	routes.DataRoutes(r)
-	r.NoRoute(func(ctx *gin.Context) {
-		request.HandleReq(ctx,server)
-	})
+	srv.DataRoutes(r)
+	r.NoRoute(srv.HandleReq)
 	r.Run()
 }
