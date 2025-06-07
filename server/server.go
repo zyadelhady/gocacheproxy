@@ -7,10 +7,9 @@ type Server struct {
 	ctx *ctx.Context
 }
 
-func New(url string,ctx *ctx.Context) *Server {
+func New(url string, ctx *ctx.Context) *Server {
 	return &Server{
 		url: url,
 		ctx: ctx,
-
 	}
 }
