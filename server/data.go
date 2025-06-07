@@ -1,7 +1,6 @@
 package server
 
 import (
-	"gocacheproxy/server"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
