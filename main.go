@@ -15,6 +15,8 @@ func main() {
 	fmt.Println("server", server)
 	r := gin.Default()
 	routes.DataRoutes(r)
-	r.NoRoute(request.HandleReq)
+	r.NoRoute(func(ctx *gin.Context) {
+		request.HandleReq(ctx,server)
+	})
 	r.Run()
 }
